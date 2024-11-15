@@ -11,6 +11,7 @@ function App() {
   const [docId, setDocId] = useState(null);
   const [loading, setLoading] = useState(false);
 
+   {/*This is the handleing the function for file upload and adding the error handling detection too */} 
   const handleFileUpload = async () => {
     if (!selectedFile) return alert('Please select a PDF file to upload.');
 
@@ -29,7 +30,7 @@ function App() {
       setLoading(false);
     }
   };
-
+   {/*This function for the handling the ask question function which handles the users questions on the uploaded pdf */} 
   const handleAskQuestion = async () => {
     if (!docId) return alert('Please upload a PDF first.');
     if (!question) return alert('Please enter a question.');
