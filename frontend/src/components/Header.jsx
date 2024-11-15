@@ -6,7 +6,7 @@ const Header = ({ setSelectedFile, handleFileUpload, loading, logo }) => {
     <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between bg-white">
       <div className="flex items-center">
         {logo && (
-          <img src={logo} alt="Logo" className="w-8 h-8 rounded-full" />
+          <img src={logo} alt="Logo" className="w-17 h-10 rounded-full" />
         )}
       </div>
       <div className="flex items-center space-x-2">
