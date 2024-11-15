@@ -10,6 +10,8 @@ from models import PDFDocument, SessionLocal
 from typing import Dict
 from sqlalchemy.exc import IntegrityError
 
+#CORS middleware for cross-origin resource requests
+
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
@@ -19,6 +21,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+#Gemini-API key for getting the responses on the uploaded pdf
 
 GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
 llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash")
@@ -41,7 +44,7 @@ def get_db():
 
 @app.post("/upload_pdf/")
 async def upload_pdf(file: UploadFile = File(...), db: Session = Depends(get_db)):
-    doc_id = file.filename  # Or some unique identifier based on the filename
+    doc_id = file.filename 
     pdf_text = ""
 
     # Read PDF content
@@ -75,8 +78,6 @@ async def ask_question(data: QuestionRequest, db: Session = Depends(get_db)):
 
     doc_text = existing_doc.content
     answer = chain.invoke({"pdf_text": doc_text, "question": data.question})
-
-    # Make sure to return only the answer text
     return {"answer": answer.content if hasattr(answer, 'content') else str(answer)}
 
 
