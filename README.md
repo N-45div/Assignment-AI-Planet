@@ -26,9 +26,80 @@ A modern web application that allows users to upload PDF documents and interact 
 - Google Gemini AI
 - PyMuPDF (fitz)
 
-## Architecture
+## Code Architecture
 
-The project follows a client-server architecture:
+### Frontend Architecture
+
+#### Components Overview
+- **App.jsx**: Root component that:
+  - Manages global state (chat history, file selection, loading states)
+  - Handles API communication with the backend
+  - Coordinates between Header and ChatInterface components
+
+- **Header.jsx**: 
+  - Manages file upload UI
+  - Handles PDF file selection
+  - Provides upload status feedback
+  - Implements file validation
+
+- **ChatInterface.jsx**:
+  - Renders chat messages
+  - Manages message input
+  - Handles message submission
+  - Implements auto-scroll functionality
+  - Provides real-time UI feedback
+
+#### State Management
+- Uses React's useState for local state management
+- Implements prop drilling for component communication
+- Manages loading states for async operations
+
+#### API Integration
+- Axios for HTTP requests
+- FormData for file uploads
+- Error handling and user feedback
+- Request/response interceptors
+
+### Backend Architecture
+
+#### Core Components
+- **FastAPI Application (main.py)**:
+  - Handles HTTP requests
+  - Manages routing and middleware
+  - Implements CORS policies
+  - Coordinates between services
+
+- **Database Layer (models.py)**:
+  - Defines SQLAlchemy models
+  - Manages database sessions
+  - Handles data persistence
+  - Implements schema definitions
+
+- **AI Service Integration**:
+  - LangChain integration
+  - Google Gemini AI implementation
+  - Prompt template management
+  - Response processing
+
+#### Data Flow
+1. **PDF Upload Process**:
+   ```
+   Client → File Upload → PDF Processing → Text Extraction → Database Storage
+   ```
+
+2. **Question-Answering Flow**:
+   ```
+   User Question → API → Database Lookup → AI Processing → Response Generation → Client
+   ```
+
+#### Security & Performance
+- Input validation
+- Error handling
+- Async operations
+- Connection pooling
+- Resource cleanup
+
+## Project Structure
 
 ```
 ├── Frontend (React)
@@ -117,20 +188,9 @@ The project follows a client-server architecture:
 - **main.py**: FastAPI application and endpoints
 - **models.py**: Database models and configuration
 
-## Database Schema
-
-```sql
-CREATE TABLE pdf_documents (
-    id VARCHAR PRIMARY KEY,
-    title VARCHAR INDEX,
-    content TEXT
-);
-```
-
 ## Live Demo
 
 The application is deployed and can be accessed at: [https://assignment-ai-planet.vercel.app/](https://assignment-ai-planet.vercel.app/)
-
 
 ## License
 
