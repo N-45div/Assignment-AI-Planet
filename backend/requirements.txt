@@ -6,3 +6,4 @@ langchain
 sqlalchemy
 langchain-google-genai
 psycopg2-binary
+python-multipart
