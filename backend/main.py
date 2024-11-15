@@ -3,7 +3,6 @@ from fastapi.middleware.cors import CORSMiddleware
 import os
 import fitz
 from pydantic import BaseModel
-from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.prompts import PromptTemplate
 from sqlalchemy.orm import Session
@@ -20,8 +19,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-load_dotenv()
-GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+
+GOOGLE_API_KEY = os.environ.get("GOOGLE_API_KEY")
 llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash")
 prompt = PromptTemplate(
     input_variables=["pdf_text", "question"],
