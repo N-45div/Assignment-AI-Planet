@@ -1,14 +1,13 @@
 import React from 'react';
 import { Upload } from 'lucide-react';
 
-const Header = ({ setSelectedFile, handleFileUpload, loading }) => {
+const Header = ({ setSelectedFile, handleFileUpload, loading, logo }) => {
   return (
     <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between bg-white">
-      <div className="flex items-center space-x-3">
-        <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center">
-          <span className="text-emerald-600 font-semibold">AI</span>
-        </div>
-        <h1 className="text-lg font-semibold text-gray-900">AI Assistant</h1>
+      <div className="flex items-center">
+        {logo && (
+          <img src={logo} alt="Logo" className="w-8 h-8 rounded-full" />
+        )}
       </div>
       <div className="flex items-center space-x-2">
         <input
