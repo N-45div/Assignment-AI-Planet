@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { Send } from 'lucide-react';
-
+ {/*This is the Chat Interface which will handle the UI like for the user to have a brief chat about the pdf */} 
 const ChatInterface = ({ chatHistory, handleAskQuestion, question, setQuestion }) => {
   const messagesEndRef = useRef(null);
 
