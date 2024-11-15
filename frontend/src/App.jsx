@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Header from './components/Header';
 import ChatInterface from './components/ChatInterface';
-import logoImage from '../assets/logo.png';
+import logoImage from './assets/logo.png';
 
 function App() {
   const [question, setQuestion] = useState('');
