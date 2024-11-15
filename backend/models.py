@@ -13,7 +13,6 @@ class PDFDocument(Base):
     title = Column(String,index=True)
     content = Column(Text,nullable = True)
 
-DATABASE_URL = os.environ.get("DATABASE_URL")
-engine = create_engine(DATABASE_URL)
+engine = create_engine(os.environ.get("DATABASE_URL"))
 SessionLocal = sessionmaker(autocommit = False, autoflush=False,bind=engine)
 Base.metadata.create_all(bind = engine)
