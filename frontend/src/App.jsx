@@ -18,7 +18,7 @@ function App() {
 
     try {
       setLoading(true);
-      const response = await axios.post('http://localhost:8000/upload_pdf/', formData);
+      const response = await axios.post('https://assignment-ai-planet.onrender.com/upload_pdf/', formData);
       setDocId(response.data.doc_id);
       alert('PDF uploaded successfully!');
     } catch (error) {
@@ -38,7 +38,7 @@ function App() {
 
     try {
       setLoading(true);
-      const response = await axios.post('http://localhost:8000/ask_question/', {
+      const response = await axios.post('https://assignment-ai-planet.onrender.com/ask_question/', {
         doc_id: docId,
         question: question,
       });
