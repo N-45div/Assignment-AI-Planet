@@ -1,6 +1,6 @@
 import React from 'react';
 import { Upload } from 'lucide-react';
-
+ {/* This is header UI which handles the upload file part of the application*/} 
 const Header = ({ setSelectedFile, handleFileUpload, loading, logo }) => {
   return (
     <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between bg-white">
