@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Header from './components/Header';
 import ChatInterface from './components/ChatInterface';
+import logoImage from '../assets/logo.png';
 
 function App() {
   const [question, setQuestion] = useState('');
@@ -57,7 +58,7 @@ function App() {
 
   return (
     <div className="flex flex-col h-screen">
-      <Header setSelectedFile={setSelectedFile} handleFileUpload={handleFileUpload} loading={loading} />
+      <Header setSelectedFile={setSelectedFile} handleFileUpload={handleFileUpload} loading={loading} logo={logoImage}/>
       <ChatInterface
         chatHistory={chatHistory}
         handleAskQuestion={handleAskQuestion}
